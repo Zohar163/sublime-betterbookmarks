@@ -13,19 +13,27 @@ All listed commands are subcommands of the `better_bookmarks` command.
 * To mark a given selection:
 
    `"args": {"subcommand": "mark_line"}`
+   
 * To remove all bookmarks on the selected layer:
 
    `"args": {"subcommand": "clear_marks"}`
+   
 * To remove ALL bookmarks from EVERY layer:
 
    `"args": {"subcommand": "clear_all"}`
+   
 * To cycle between the declared layers:
 
    `"args": {"subcommand": "layer_swap", "direction": "prev"}`
    
    `"args": {"subcommand": "layer_swap", "direction": "next"}`
+   
 * To cycle the viewport to each bookmark:
 
    `"args": {"subcommand": "cycle_mark", "direction": "prev"}`
    
    `"args": {"subcommand": "cycle_mark", "direction": "next"}`
+
+- To show bookmarks of current layer:
+
+  `"args": {"subcommand": "show_marks"}`

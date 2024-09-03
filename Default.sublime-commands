@@ -31,5 +31,10 @@
       "caption": "BetterBookmarks: Clear All Bookmarks",
       "command": "better_bookmarks",
       "args": {"subcommand": "clear_all"}
+   },
+   {
+    "caption": "BetterBookmarks: Show Bookmark",
+    "command": "better_bookmarks",
+    "args": {"subcommand": "show_marks"}
    }
 ]

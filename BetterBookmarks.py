@@ -81,6 +81,32 @@ class BetterBookmarksCommand(sublime_plugin.TextCommand):
       if layer == self.layer:
          self._render()
 
+   def _show_marks(self):
+      layer = self.layer
+      region = self._get_region_name(layer)
+      marks = self.view.get_regions(region)
+
+      # 获取书签内容
+      text_msg = []
+      for mark in marks:
+         text = self.view.substr(mark)
+         if len(text) == 0:
+            text = 'text is empth, region=' + str(mark)
+
+         text_msg.append(text)
+
+      def on_done(index): # 选中索引从0开始
+         if index != -1:
+            print(index)
+            index_text = text_msg[index]
+            print("选中:" + index_text )
+            self.view.run_command('{}_bookmark'.format("prev"), {'name': 'better_bookmarks'})
+         else:
+            print("取消选择")
+
+      # 弹出选项框，传入字符串数组和回调函数
+      sublime.active_window().show_quick_panel(text_msg, on_done)
+
    # Changes the layer to the given one and updates any and all of the status indicators.
    def _change_to_layer(self, layer):
       self.layer = layer
@@ -131,6 +157,8 @@ class BetterBookmarksCommand(sublime_plugin.TextCommand):
          self._add_marks(line, layer)
       elif subcommand == 'cycle_mark':
          self.view.run_command('{}_bookmark'.format(args['direction']), {'name': 'better_bookmarks'})
+      elif subcommand == 'show_marks':
+         self._show_marks()
       elif subcommand == 'clear_marks':
          layer = args['layer'] if 'layer' in args else self.layer
          self.view.erase_regions('better_bookmarks')
