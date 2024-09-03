@@ -44,8 +44,8 @@
     *                Overlapping selections will combine to form a larger mark.
     *    line: Toggles a mark on each line of the selection.
     */
-   "marking_mode": "selection",
+   "marking_mode": "line",
    
    // If true, ignore the order of the selection; this causes the bookmark to always be min->max.
-   "ignore_cursor": false
+   "ignore_cursor": true
 }
